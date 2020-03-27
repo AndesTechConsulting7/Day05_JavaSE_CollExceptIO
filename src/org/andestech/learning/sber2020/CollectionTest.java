@@ -28,5 +28,27 @@ public class CollectionTest {
 
         printColl(listDeduble);
 
+        // Словари
+
+        Map<Integer,String> dict1 =
+                new HashMap<>();
+
+        dict1.put(-879, "FFFA");
+        dict1.put(1, "ABCD");
+        dict1.put(10, "ABCD");
+        dict1.put(946876, "938790FFFG");
+        dict1.putIfAbsent(1, "LLL");
+        //dict1.
+        //((HashMap)dict1).
+
+        for (int key: dict1.keySet()) {
+            System.out.printf("(%d -> %s)\n", key, dict1.get(key) );
+        }
+
+
+
+
+
+
     }
 }
