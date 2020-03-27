@@ -6,6 +6,12 @@ public class Account {
     private static double MIN_TRAN = 10;
     private static double MAX_TRAN = 10_000;
 
+    static {
+        // db
+        // <-- LIMITS
+
+    }
+
     private double store; // in real world use Decimal or Money like type
     private long id;
 
