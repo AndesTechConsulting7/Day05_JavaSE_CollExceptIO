@@ -12,17 +12,23 @@ public class Account {
     public double getStore(){return store;}
     public long getId(){ return id;}
 
-    public Account(int store, long id) throws ABSException {
-        checkStoreLimit(store);
+    private void setStore(double store) throws ABSException {
+        if( store > MAX || store < MIN )
+            throw new ABSException(String.format("Store account exception: %f out of limits!", store));
         this.store = store;
+    }
+
+    public Account(long id, double store) throws ABSException {
+       // checkStoreLimit(store);
+        this.setStore(store);
         this.id = id;
     }
     // --> Empoloyee, Customer,..
 
-    private static void checkStoreLimit(double newStore) throws ABSException {
-        if( newStore > MAX || newStore < MIN )
-            throw new ABSException(String.format("Store account exception: %f out of limits!", newStore));
-    }
+//    private static void checkStoreLimit(double newStore) throws ABSException {
+//        if( newStore > MAX || newStore < MIN )
+//            throw new ABSException(String.format("Store account exception: %f out of limits!", newStore));
+//    }
 
     private static void checkTranValid(double money) throws ABSException {
         if( money > MAX_TRAN || money < MIN_TRAN )
@@ -32,16 +38,16 @@ public class Account {
     public void addMoney(double money) throws ABSException {
         double newStore = store + money;
         checkTranValid(money);
-        checkStoreLimit(newStore);
-        this.store = newStore;
+       // checkStoreLimit(newStore);
+        this.setStore(newStore);
 
     }
 
     public void withdrawal(int money) throws ABSException {
         double newStore = store - money;
         checkTranValid(money);
-        checkStoreLimit(newStore);
-        this.store = newStore;
+       // checkStoreLimit(newStore);
+        this.setStore(newStore);
 
     }
 
