@@ -12,6 +12,14 @@ public class Account {
     public double getStore(){return store;}
     public long getId(){ return id;}
 
+    @Override
+    public String toString() {
+        return "Account{" +
+                "store=" + store +
+                ", id=" + id +
+                '}';
+    }
+
     private void setStore(double store) throws ABSException {
         if( store > MAX || store < MIN )
             throw new ABSException(String.format("Store account exception: %f out of limits!", store));
